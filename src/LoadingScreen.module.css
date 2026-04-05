@@ -1,0 +1,100 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #050505;
+  color: #f5f5f5;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  transition:
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.65s ease;
+}
+
+.root.exit {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  pointer-events: none;
+}
+
+.cornerTL,
+.cornerBR {
+  position: absolute;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(245, 245, 245, 0.45);
+}
+
+.cornerTL {
+  top: clamp(1rem, 3vw, 2rem);
+  left: clamp(1rem, 3vw, 2rem);
+}
+
+.cornerBR {
+  bottom: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+}
+
+.centerBlock {
+  text-align: center;
+  max-width: min(90vw, 28rem);
+}
+
+.kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.45em;
+  color: rgba(245, 245, 245, 0.5);
+}
+
+.title {
+  margin: 0 0 1.75rem;
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.barTrack {
+  height: 2px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.barFill {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.12s linear;
+}
+
+.pct {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.55);
+}

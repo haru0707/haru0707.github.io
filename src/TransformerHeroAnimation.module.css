@@ -1,0 +1,116 @@
+.root {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(0.25rem, 0.8vw, 0.6rem) 0;
+  transform-origin: center 18%;
+  will-change: transform, opacity, filter;
+  mask-image: radial-gradient(
+    ellipse 92% 80% at 52% 48%,
+    rgba(0, 0, 0, 1) 58%,
+    rgba(0, 0, 0, 0.94) 74%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 7% 8% 12% 8%;
+  background:
+    radial-gradient(circle at 26% 34%, rgba(242, 196, 109, 0.12), transparent 24%),
+    radial-gradient(circle at 58% 50%, rgba(245, 247, 251, 0.06), transparent 19%),
+    radial-gradient(circle at 56% 44%, rgba(110, 182, 255, 0.11), transparent 26%),
+    radial-gradient(circle at 76% 62%, rgba(116, 223, 186, 0.1), transparent 24%);
+  filter: blur(42px);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.08) 50%, rgba(5, 5, 5, 0) 100%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.02) 0%, rgba(5, 5, 5, 0) 18%, rgba(5, 5, 5, 0) 82%, rgba(5, 5, 5, 0.02) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1540 / 820;
+  transform-origin: center center;
+  will-change: transform;
+  filter: drop-shadow(0 0 34px rgba(255, 255, 255, 0.025));
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 0.45rem;
+  align-items: start;
+  min-height: 2rem;
+  will-change: transform, opacity;
+}
+
+.metaChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.95rem;
+  padding: 0.32rem 0.68rem;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: rgba(245, 245, 245, 0.68);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.caption {
+  margin: 0;
+  max-width: 58ch;
+  min-height: calc(1em * 5.16);
+  font-size: 0.92rem;
+  line-height: 1.72;
+  color: rgba(245, 245, 245, 0.68);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 720px) {
+  .stage {
+    padding-block: 0;
+  }
+
+  .metaRow {
+    grid-template-columns: 1fr;
+    min-height: calc(1.95rem * 3 + 0.9rem);
+  }
+
+  .metaChip {
+    font-size: 0.62rem;
+  }
+
+  .caption {
+    min-height: calc(1em * 6.88);
+    font-size: 0.88rem;
+  }
+}
