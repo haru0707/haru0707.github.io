@@ -11,15 +11,15 @@ import styles from "./App.module.css";
 const socialLinks = [
   {
     label: "Kaggle",
-    href: "https://www.kaggle.com/haru0707kun",
+    href: "https://www.kaggle.com/haru0707",
   },
   {
     label: "GitHub",
-    href: "https://github.com/Haru0707kun",
+    href: "https://github.com/haru0707",
   },
   {
     label: "X",
-    href: "https://x.com/Haru0707kun",
+    href: "https://x.com/harukun721740",
   },
 ] as const;
 
