@@ -1,0 +1,163 @@
+.root {
+  --head: #ffffff;
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.stage {
+  position: relative;
+  height: clamp(19rem, 56vh, 34rem);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.25rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008));
+  overflow: hidden;
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 60% at 50% 50%, var(--head), transparent 70%);
+  opacity: 0.06;
+  transition: background 0.6s ease;
+  pointer-events: none;
+}
+
+/* dotted field, strongest in the middle */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  background-position: 11px 11px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 0%, transparent 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.caption {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.step {
+  position: relative;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.stepFill {
+  position: absolute;
+  inset: 0;
+  background: var(--head);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: background 0.4s ease;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.title {
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: rgba(245, 245, 245, 0.6);
+}
+
+.title b {
+  font-weight: 500;
+  color: var(--head);
+  transition: color 0.4s ease;
+}
+
+.formula {
+  font-size: 0.68rem;
+  color: rgba(245, 245, 245, 0.42);
+}
+
+@keyframes noteIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.note {
+  min-height: 3.4em;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(245, 245, 245, 0.72);
+  animation: noteIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.source {
+  margin: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(245, 245, 245, 0.38);
+}
+
+.source a {
+  color: rgba(245, 245, 245, 0.62);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.source a:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+@media (max-width: 720px) {
+  .stage {
+    height: 22rem;
+  }
+}
+
+@media (max-height: 780px) and (min-width: 980px) {
+  .stage {
+    height: clamp(15rem, 50vh, 24rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage::before,
+  .stepFill,
+  .title b {
+    transition: none;
+  }
+
+  .note {
+    animation: none;
+  }
+}

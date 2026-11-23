@@ -4,7 +4,7 @@
   --muted: #8a8a8a;
   --line: rgba(255, 255, 255, 0.12);
   --accent: #ffffff;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
   font-optical-sizing: auto;
   line-height: 1.5;
   font-weight: 400;

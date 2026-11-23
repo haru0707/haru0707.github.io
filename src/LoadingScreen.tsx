@@ -10,7 +10,7 @@ type Props = {
 
 export function LoadingScreen({
   onComplete,
-  minMs = 3200,
+  minMs = 1800,
   exiting = false,
 }: Props) {
   const [progress, setProgress] = useState(0);
